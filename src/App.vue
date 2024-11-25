@@ -125,7 +125,6 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 html,
 section {
