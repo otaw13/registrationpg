@@ -1,35 +1,44 @@
 <template>
-  <img class="absolute z-[-1] w-full h-[100%] " src="https://cdn.wallpapersafari.com/96/2/YyiJR7.jpg" alt="">
-  <section class="relative flex justify-center items-center">
-    <div class="cont4page  z-10 mt-[10%] p-10 ">
-      <h1 class="text-[5rem]  fredoka bg-gradient-to-r  from-[#0766AD] via-[#190482] to-[#1640D6] bg-clip-text text-transparent">Registration</h1>
-      <input
-        type="text"
-        className="focus:text-white fredoka  focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF] "
-        v-model="userName"
-        placeholder="name"
-      />
-      <input
-        className="focus:text-white fredoka focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF]"
-        :type="isPasswordVisible ? 'text' : 'password'"
-        v-model="userPass"
-        placeholder="password"
-        id="passWord"
-      />
-      <input
-        className="focus:text-white fredoka focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF] "
-        type="email"
-        v-model="userEmail"
-        placeholder="email"
-      />
-      
-      <div class="cont4btn">
-        <button  @click="sendData">send</button>
-        <button  @click="togglePasswordVisibility" id="btn2">
-          {{ isPasswordVisible ? "hide" : "show" }}
-        </button>
+  <section class="overflow-hidden min-h-[100vh] ">
+    <img
+      class="absolute inset-0 z-[-1] w-full h-[100vh] object-cover overflow-hidden"
+      src="https://cdn.wallpapersafari.com/96/2/YyiJR7.jpg"
+      alt=""
+    />
+    <section class=" flex justify-center items-center min-h-screen w-full">
+      <div class="cont4page z-10 p-10">
+        <h1
+          class="text-[5rem] fredoka bg-gradient-to-r from-[#0766AD] via-[#190482] to-[#1640D6] bg-clip-text text-transparent"
+        >
+          Registration
+        </h1>
+        <input
+          type="text"
+          class="focus:text-white fredoka focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF]"
+          v-model="userName"
+          placeholder="name"
+        />
+        <input
+          class="focus:text-white fredoka focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF]"
+          :type="isPasswordVisible ? 'text' : 'password'"
+          v-model="userPass"
+          placeholder="password"
+          id="passWord"
+        />
+        <input
+          class="focus:text-white fredoka focus:bg-[#061c2a] focus:placeholder-gray-500 outline-none focus:ring focus:ring-[#1F51FF]"
+          type="email"
+          v-model="userEmail"
+          placeholder="email"
+        />
+        <div class="cont4btn">
+          <button @click="sendData">send</button>
+          <button @click="togglePasswordVisibility" id="btn2">
+            {{ isPasswordVisible ? "hide" : "show" }}
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   </section>
 </template>
 
@@ -112,35 +121,39 @@ export default {
 </script>
 
 <style scoped>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Matemasie&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+
+html,
+section {
+  margin: 0;
+  padding: 0;
+  height:100vh;
+  overflow: hidden;
+}
 
 .fredoka {
-  font-family: 'Fredoka', sans-serif ;
+  font-family: 'Fredoka', sans-serif;
 }
-
-.kalam {
-  font-family: 'Kalam', sans-serif;
-}
-.Matemasie {
-  font-family: 'Matemasie', sans-serif;
-}
-
 
 .cont4page {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  height: auto ;
-  width: 30%;
+  width: 80%;
+  max-width: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
   border-radius: 30px;
-  border: 1px, solid, white;
-  box-shadow: 1px 24px 61px 10px rgba(230,180,105,0.83);
+  border: 1px solid white;
+  box-shadow: 1px 24px 61px 10px rgba(230, 180, 105, 0.83);
+  max-height: 80vh; /* Restrict height to avoid overflowing */
+  height: auto;
 }
 
 .cont4btn {
@@ -152,8 +165,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  
+  width: 100%;
   border-radius: 10px;
   padding: 20px;
 }
@@ -166,13 +178,15 @@ button {
   padding: 15px 45px;
   background-color: rgb(38, 121, 193);
   color: rgb(27, 66, 142);
- 
 }
+
 button:hover {
   background-color: rgb(27, 66, 142);
-  transform: none;
-  transition: ease-in-out;
-  transition-duration: 300ms;
   color: white;
+  transition: ease-in-out 300ms;
+}
+
+img {
+  object-fit: cover;
 }
 </style>
